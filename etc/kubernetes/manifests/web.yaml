@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: easypay-web
+spec:
+  labels:
+    name: easypay-web
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: easypay-web
+  template:
+    metadata:
+      labels:
+        name: easypay-web
+    spec:
+      containers:
+      - image: charleslowery/easypay
+        name: easypay-web
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 200m
