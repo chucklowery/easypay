@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: easypay-redis
+  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      application: "redis"
+  template: 
+    metadata:
+      labels: 
+        application: "redis"
+    spec: 
+      containers:
+        -
+          image: redis:alpine
+          name: redis-container
+          ports: 
+            - containerPort: 6379
+          volumeMounts: 
+            -
+              mountPath: /data
+              name: redis-volume
+      volumes:
+        -
+          emptyDir:
+          name: redis-volume
