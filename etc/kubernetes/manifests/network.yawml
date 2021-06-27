@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: easypay-db-netpol
+spec:
+  podSelector:
+    matchLabels:
+      app: Easypay
+      role: datastore
+  ingress:
+  - from:
+      - podSelector:
+          matchLabels:
+            name: easypay-web
