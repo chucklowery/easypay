@@ -1,0 +1,10 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+          name: user-role
+subjects:
+       - kind: User
+         name: pod-user
+roleRef:
+         kind: Role
+         name: pod-user-role
